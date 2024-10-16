@@ -87,6 +87,6 @@ func get_collider_shape(body_or_area) -> RectangleShape2D:
 	assert(shape is RectangleShape2D)
 	return shape
 
-func handle_body_entered(body: Node2D):
+func handle_body_entered(_body: Node2D):
 	Game.score += 1
-	print("Score: %" % Game.score)
+	print("Score: %d" % Game.score)
