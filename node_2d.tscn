@@ -11,6 +11,7 @@ size = Vector2(129, 127)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(576, 324)
+collision_layer = 3
 script = ExtResource("1_7iv2i")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]

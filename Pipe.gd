@@ -65,6 +65,7 @@ func adjust_sizes():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	adjust_sizes()
+	$GoalArea.body_entered.connect(handle_body_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,3 +84,7 @@ func get_collider_shape(body_or_area) -> RectangleShape2D:
 	var shape = collider.shape
 	assert(shape is RectangleShape2D)
 	return shape
+
+func handle_body_entered(body: Node2D):
+	Game.score += 1
+	print("Score")
