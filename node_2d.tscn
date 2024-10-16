@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6likmwxto038"]
+
+[ext_resource type="Script" path="res://Bird.gd" id="1_7iv2i"]
+[ext_resource type="Texture2D" uid="uid://c2o4d1dx2t8ta" path="res://icon.svg" id="1_ayl44"]
+[ext_resource type="Script" path="res://World.gd" id="3_fwwdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmi0d"]
+size = Vector2(129, 127)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("1_7iv2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ayl44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.5, -0.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_tmi0d")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("3_fwwdl")
+speed = 420.0

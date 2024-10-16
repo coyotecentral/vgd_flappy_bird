@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg4v253ceurw2"]
+
+[ext_resource type="Script" path="res://Pipe.gd" id="1_767ve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckhts"]
+resource_local_to_scene = true
+size = Vector2(128, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyql0"]
+resource_local_to_scene = true
+size = Vector2(128, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apia2"]
+resource_local_to_scene = true
+size = Vector2(31.5, 200)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_767ve")
+
+[node name="UpperPipe" type="StaticBody2D" parent="."]
+position = Vector2(0, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ckhts")
+
+[node name="ColorRect" type="ColorRect" parent="UpperPipe"]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = 64.0
+offset_bottom = 112.0
+
+[node name="LowerPipe" type="StaticBody2D" parent="."]
+position = Vector2(0, 536)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerPipe"]
+shape = SubResource("RectangleShape2D_iyql0")
+
+[node name="ColorRect" type="ColorRect" parent="LowerPipe"]
+offset_left = -64.0
+offset_top = -112.0
+offset_right = 64.0
+offset_bottom = 112.0
+
+[node name="GoalArea" type="Area2D" parent="."]
+position = Vector2(0, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
+position = Vector2(48, 0)
+shape = SubResource("RectangleShape2D_apia2")
+debug_color = Color(0, 0.643137, 0.321569, 0.419608)
