@@ -66,6 +66,8 @@ func adjust_sizes():
 func _ready():
 	adjust_sizes()
 	$GoalArea.body_entered.connect(handle_body_entered)
+	lower_pipe.add_to_group("pipes")
+	upper_pipe.add_to_group("pipes")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -87,4 +89,4 @@ func get_collider_shape(body_or_area) -> RectangleShape2D:
 
 func handle_body_entered(body: Node2D):
 	Game.score += 1
-	print("Score")
+	print("Score: %" % Game.score)

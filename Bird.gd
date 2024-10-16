@@ -7,7 +7,9 @@ var jump_velocity = 420.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	contact_monitor = true
+	max_contacts_reported = 1
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +23,10 @@ func _physics_process(delta):
 	angular_velocity = 0
 	if Input.is_action_just_pressed("jump"):
 		jump()
+	
+	for b in get_colliding_bodies():
+		if b.is_in_group("pipes"):
+			print("You hit a pipe")
 
 
 # Adds velocity to this RigidBody
