@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6likmwxto038"]
+[gd_scene load_steps=7 format=3 uid="uid://c6likmwxto038"]
 
 [ext_resource type="Script" path="res://Bird.gd" id="1_7iv2i"]
 [ext_resource type="Texture2D" uid="uid://c2o4d1dx2t8ta" path="res://icon.svg" id="1_ayl44"]
@@ -9,6 +9,9 @@ size = Vector2(129, 127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msv0g"]
 size = Vector2(1169, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifjmh"]
+size = Vector2(1169, 96)
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,8 +33,14 @@ shape = SubResource("RectangleShape2D_tmi0d")
 script = ExtResource("3_fwwdl")
 speed = 420.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["pipes"]]
+[node name="Bottom" type="StaticBody2D" parent="." groups=["pipes"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2(574.5, 679.5)
 shape = SubResource("RectangleShape2D_msv0g")
+
+[node name="Upper" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper"]
+position = Vector2(575, -42)
+shape = SubResource("RectangleShape2D_ifjmh")

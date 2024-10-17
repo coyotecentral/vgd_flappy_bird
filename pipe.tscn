@@ -4,21 +4,20 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckhts"]
 resource_local_to_scene = true
-size = Vector2(128, 224)
+size = Vector2(128, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyql0"]
 resource_local_to_scene = true
-size = Vector2(128, 224)
+size = Vector2(128, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apia2"]
 resource_local_to_scene = true
-size = Vector2(31.5, 200)
+size = Vector2(32, 200)
 
 [node name="Pipe" type="Node2D"]
 script = ExtResource("1_767ve")
 
 [node name="UpperPipe" type="StaticBody2D" parent="."]
-position = Vector2(0, 112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPipe"]
 position = Vector2(0, -1)
@@ -26,9 +25,7 @@ shape = SubResource("RectangleShape2D_ckhts")
 
 [node name="ColorRect" type="ColorRect" parent="UpperPipe"]
 offset_left = -64.0
-offset_top = -112.0
 offset_right = 64.0
-offset_bottom = 112.0
 
 [node name="LowerPipe" type="StaticBody2D" parent="."]
 position = Vector2(0, 536)
@@ -43,7 +40,7 @@ offset_right = 64.0
 offset_bottom = 112.0
 
 [node name="GoalArea" type="Area2D" parent="."]
-position = Vector2(0, 324)
+position = Vector2(0, -100)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]

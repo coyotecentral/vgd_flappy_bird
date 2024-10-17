@@ -17,26 +17,31 @@ var goal_size: int = 200
 @export
 var goal_position: int = 648 / 2
 
+var SCREEN_HEIGHT: float = ProjectSettings.get_setting("display/window/size/viewport_height")
+const CHUNK_SIZE = 128
+
 func adjust_sizes():
+	print(SCREEN_HEIGHT)
 	#Check if this is an actual node
 	if gap_goal:
 		var rect = get_collider_shape(gap_goal)
-		rect.size.y = goal_size
+		rect.size = Vector2(CHUNK_SIZE / 4, goal_size)
 		var top_distance: int = goal_position - (goal_size / 2.0)
 		if top_distance < 0:
 			gap_goal.position.y = goal_size / 2.0
+			gap_goal.position.y = CHUNK_SIZE - (CHUNK_SIZE / 4)
 		else:
 			gap_goal.position.y = goal_position
 
-		var bottom_distance: int = 648 - (gap_goal.position.y + (goal_size / 2.0))
+		var bottom_distance: int = SCREEN_HEIGHT - (gap_goal.position.y + (goal_size / 2.0))
 		if bottom_distance < 0:
-			gap_goal.position.y = 648 - goal_size / 2.0
+			gap_goal.position.y = SCREEN_HEIGHT - goal_size / 2.0
 	# Resize the upper_pipe shape to fit the gap
 	if gap_goal and upper_pipe:
 		var top_distance: int = gap_goal.position.y - (goal_size / 2.0)
 		var rect = get_collider_shape(upper_pipe)
 		if top_distance > 0:
-			rect.size.y = top_distance
+			rect.size = Vector2(CHUNK_SIZE, top_distance)
 			upper_pipe.position.y = top_distance / 2.0
 		else:
 			rect.size.y = 0
@@ -48,13 +53,13 @@ func adjust_sizes():
 			-round(rect.size.y / 2.0)
 		)
 	if gap_goal and lower_pipe:
-			var bottom_distance: float = 648 - (gap_goal.position.y + (goal_size / 2.0))
+			var bottom_distance: float = SCREEN_HEIGHT - (gap_goal.position.y + (goal_size / 2.0))
 			var rect = get_collider_shape(lower_pipe)
 			if bottom_distance > 0:
-				rect.size.y = bottom_distance
+				rect.size = Vector2(CHUNK_SIZE, bottom_distance)
 			else:
 				rect.size.y = 0
-			lower_pipe.position.y = 648 - (rect.size.y / 2.0)
+			lower_pipe.position.y = SCREEN_HEIGHT - (rect.size.y / 2.0)
 			var color_rect: ColorRect = lower_pipe.get_child(1)
 			color_rect.size = rect.size
 			color_rect.position = Vector2(
