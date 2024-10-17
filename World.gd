@@ -35,7 +35,6 @@ func _physics_process(delta):
 
 func get_random_pipe_position():
 	var y_pos = rng.randi_range(0, 648)
-	print(y_pos)
 	return y_pos
 
 func handle_reset():

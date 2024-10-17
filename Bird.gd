@@ -17,7 +17,6 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	print(global_position)
 	# Freeze the bird on the X axis
 	linear_velocity.x = 0
 	# Lock the rotation of the bird
@@ -36,7 +35,6 @@ func jump():
 	linear_velocity.y = -jump_velocity
 
 func handle_reset():
-	print("resetting")
 	var screen_rect: Rect2 = get_viewport_rect()
 	var reset_position = Vector2(
 		screen_rect.size.x / 2,

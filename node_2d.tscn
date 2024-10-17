@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6likmwxto038"]
+[gd_scene load_steps=8 format=3 uid="uid://c6likmwxto038"]
 
 [ext_resource type="Script" path="res://Bird.gd" id="1_7iv2i"]
 [ext_resource type="Texture2D" uid="uid://c2o4d1dx2t8ta" path="res://icon.svg" id="1_ayl44"]
 [ext_resource type="Script" path="res://World.gd" id="3_fwwdl"]
+[ext_resource type="Script" path="res://Score.gd" id="4_cnkbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmi0d"]
 size = Vector2(129, 127)
@@ -44,3 +45,14 @@ shape = SubResource("RectangleShape2D_msv0g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upper"]
 position = Vector2(575, -42)
 shape = SubResource("RectangleShape2D_ifjmh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 555.0
+offset_right = 595.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+script = ExtResource("4_cnkbf")

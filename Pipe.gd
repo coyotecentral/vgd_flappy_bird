@@ -21,7 +21,6 @@ var SCREEN_HEIGHT: float = ProjectSettings.get_setting("display/window/size/view
 const CHUNK_SIZE = 128
 
 func adjust_sizes():
-	print(SCREEN_HEIGHT)
 	#Check if this is an actual node
 	if gap_goal:
 		var rect = get_collider_shape(gap_goal)
@@ -94,4 +93,3 @@ func get_collider_shape(body_or_area) -> RectangleShape2D:
 
 func handle_body_entered(_body: Node2D):
 	Game.score += 1
-	print("Score: %d" % Game.score)
