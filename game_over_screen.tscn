@@ -15,7 +15,7 @@ script = ExtResource("1_3onph")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.133333, 0.133333, 0.133333, 0.74902)
+color = Color(0.172549, 0.172549, 0.172549, 0.407843)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -34,3 +34,11 @@ offset_bottom = 411.0
 text = "Your Score:
 0"
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 442.0
+offset_right = 599.0
+offset_bottom = 473.0
+text = "Play Again"

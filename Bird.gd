@@ -9,6 +9,7 @@ var jump_velocity = 420.0
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 1
+	Game.reset.connect(handle_reset)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,10 +24,17 @@ func _physics_process(delta):
 		jump()
 	
 	for b in get_colliding_bodies():
-		if b.is_in_group("pipes"):
+		if b.is_in_group("pipes") and Game.game_state == Game.State.PLAYING:
 			Game.game_over.emit()
 
 
 # Adds velocity to this RigidBody
 func jump():
 	linear_velocity.y = -jump_velocity
+
+func handle_reset():
+	var screen_rect: Rect2 = get_viewport_rect()
+	position = Vector2(
+		screen_rect.size.x / 2,
+		screen_rect.size.y / 2
+	)
