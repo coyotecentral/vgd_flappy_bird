@@ -72,7 +72,7 @@ position = Vector2(4, -6)
 scale = Vector2(2.57, 2.57)
 sprite_frames = SubResource("SpriteFrames_c1u1u")
 autoplay = "default"
-frame_progress = 0.892469
+frame_progress = 0.394387
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_fwwdl")

@@ -45,6 +45,7 @@ func adjust_sizes():
 		else:
 			rect.size.y = 0
 			upper_pipe.position.y = 0
+		resize_sprite(upper_pipe)
 		var color_rect: ColorRect = upper_pipe.get_child(1)
 		color_rect.size = rect.size
 		color_rect.position = Vector2(
@@ -58,6 +59,7 @@ func adjust_sizes():
 				rect.size = Vector2(CHUNK_SIZE, bottom_distance)
 			else:
 				rect.size.y = 0
+			resize_sprite(lower_pipe)
 			lower_pipe.position.y = SCREEN_HEIGHT - (rect.size.y / 2.0)
 			var color_rect: ColorRect = lower_pipe.get_child(1)
 			color_rect.size = rect.size
@@ -79,6 +81,16 @@ func _process(delta):
 	# This will run in the editor
 	if Engine.is_editor_hint():
 		adjust_sizes()
+
+# Set the sprite's scale property so that it fits
+# the collider
+func resize_sprite(pipe: StaticBody2D):
+	var collider_rect: RectangleShape2D = pipe.get_node("CollisionShape2D").shape
+	var sprite: Sprite2D = pipe.get_node("Sprite2D")
+	var sprite_size: Vector2 = sprite.region_rect.size
+	var x_scale: float = collider_rect.size.x / sprite_size.x
+	var y_scale: float = collider_rect.size.y / sprite_size.y
+	sprite.scale = Vector2(x_scale, y_scale)
 
 # Expect `body_or_area` to be Area2D, StaticBody2D, or RigidBody2D
 func get_collider_shape(body_or_area) -> RectangleShape2D:
