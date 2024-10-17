@@ -1,12 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6likmwxto038"]
+[gd_scene load_steps=16 format=3 uid="uid://c6likmwxto038"]
 
 [ext_resource type="Script" path="res://Bird.gd" id="1_7iv2i"]
-[ext_resource type="Texture2D" uid="uid://c2o4d1dx2t8ta" path="res://icon.svg" id="1_ayl44"]
+[ext_resource type="Script" path="res://Background.gd" id="1_fdp4e"]
 [ext_resource type="Script" path="res://World.gd" id="3_fwwdl"]
+[ext_resource type="Texture2D" uid="uid://bdpe7clt3mme5" path="res://vulture.png" id="3_k5ibc"]
 [ext_resource type="Script" path="res://Score.gd" id="4_cnkbf"]
+[ext_resource type="Texture2D" uid="uid://c8hkhru5fig3v" path="res://Layers/back.png" id="5_ghe5m"]
+[ext_resource type="Texture2D" uid="uid://bktn0jg0s7key" path="res://Layers/middle.png" id="7_7el2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmi0d"]
 size = Vector2(129, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l02ls"]
+atlas = ExtResource("3_k5ibc")
+region = Rect2(0, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcbjq"]
+atlas = ExtResource("3_k5ibc")
+region = Rect2(39, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq1uq"]
+atlas = ExtResource("3_k5ibc")
+region = Rect2(78, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1frw"]
+atlas = ExtResource("3_k5ibc")
+region = Rect2(117, 0, 39, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1u1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l02ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcbjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq1uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1frw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_msv0g"]
 size = Vector2(1169, 67)
@@ -15,20 +54,25 @@ size = Vector2(1169, 67)
 size = Vector2(1169, 96)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_fdp4e")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(576, 324)
 collision_layer = 3
 script = ExtResource("1_7iv2i")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ayl44")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-0.5, -0.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_tmi0d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+texture_filter = 1
+position = Vector2(4, -6)
+scale = Vector2(2.57, 2.57)
+sprite_frames = SubResource("SpriteFrames_c1u1u")
+autoplay = "default"
+frame_progress = 0.892469
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_fwwdl")
@@ -56,3 +100,36 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 script = ExtResource("4_cnkbf")
+
+[node name="Background" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="Sky" type="Sprite2D" parent="Background"]
+z_index = -100
+scale = Vector2(4, 4)
+texture = ExtResource("5_ghe5m")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+z_index = -9
+position = Vector2(175, 732)
+scale = Vector2(2, 2)
+texture = ExtResource("7_7el2a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+z_index = -9
+position = Vector2(527, 735)
+scale = Vector2(2, 2)
+texture = ExtResource("7_7el2a")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+z_index = -9
+position = Vector2(879, 732)
+scale = Vector2(2, 2)
+texture = ExtResource("7_7el2a")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+z_index = -9
+position = Vector2(1231, 735)
+scale = Vector2(2, 2)
+texture = ExtResource("7_7el2a")
