@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6likmwxto038"]
+[gd_scene load_steps=15 format=3 uid="uid://c6likmwxto038"]
 
 [ext_resource type="Script" path="res://Bird.gd" id="1_7iv2i"]
-[ext_resource type="Script" path="res://Background.gd" id="1_fdp4e"]
 [ext_resource type="Script" path="res://World.gd" id="3_fwwdl"]
 [ext_resource type="Texture2D" uid="uid://bdpe7clt3mme5" path="res://vulture.png" id="3_k5ibc"]
 [ext_resource type="Script" path="res://Score.gd" id="4_cnkbf"]
@@ -54,7 +53,6 @@ size = Vector2(1169, 67)
 size = Vector2(1169, 96)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_fdp4e")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(576, 324)
@@ -72,7 +70,7 @@ position = Vector2(4, -6)
 scale = Vector2(2.57, 2.57)
 sprite_frames = SubResource("SpriteFrames_c1u1u")
 autoplay = "default"
-frame_progress = 0.394387
+frame_progress = 0.239132
 
 [node name="World" type="Node2D" parent="."]
 script = ExtResource("3_fwwdl")

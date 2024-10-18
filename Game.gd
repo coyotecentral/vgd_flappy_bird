@@ -11,6 +11,7 @@ var lock_controls: bool = false
 enum State {
 	PLAYING,
 	DEAD,
+	MENU,
 }
 
 var game_state: State = State.PLAYING
@@ -29,14 +30,14 @@ func _process(delta):
 	pass
 
 func handle_game_over():
-	game_state = State.DEAD
-	lock_controls = true
-	if not game_over_menu:
-		game_over_menu = game_over_scene.instantiate()
-		get_tree().root.add_child(game_over_menu)
+	if game_state == State.PLAYING:
+		game_state = State.DEAD
+		lock_controls = true
+		if not game_over_menu:
+			game_over_menu = game_over_scene.instantiate()
+			get_tree().root.add_child(game_over_menu)
 
 func handle_reset():
 	score = 0
-	lock_controls = false
-	game_state = State.PLAYING
+	game_state = State.MENU
 	game_over_menu.queue_free()
